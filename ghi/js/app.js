@@ -27,6 +27,15 @@ function createCard(name, description, pictureUrl, start, end, location) {
   
       if (!response.ok) {
         // Figure out what to do when the response is bad
+        const alert = document.querySelector('#display-alert');
+        alert.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+              Some error message thing.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+
+        `
       } else {
         const data = await response.json();
   
@@ -49,7 +58,25 @@ function createCard(name, description, pictureUrl, start, end, location) {
   
       }
     } catch (e) {
-      console.error(e)
+      console.error(e);
+      const alert = document.querySelector('#display-alert');
+      alert.innerHTML = `
+      <div class="alert alert-danger" role="alert">
+            Some error message thing. ${e}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      
+      `
+      
+      
+      
+      
+      
+    
+
+
+
+
     }
   
   });
